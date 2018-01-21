@@ -29,15 +29,17 @@ public class Servicio {
 
 
     public static void main(String[] args) throws Exception {
-       String encriptado = Encriptar("manager\nM05adm1n\n192.168.2.253");
+       //String encriptado = Encriptar("manager\nM05adm1n\n192.168.2.253");
         //System.out.println(encriptado);
-        grabardatos("C:/librerias/coneccion.txt",encriptado);
+        //grabardatos("C:/librerias/coneccion.txt",encriptado);
         
-        for (String arg : muestraContenido("C:/librerias/coneccion.txt")) {
-             String desencriptado = Desencriptar(arg);
-            System.out.println(desencriptado);
-        }
+        //for (String arg : muestraContenido("C:/librerias/coneccion.txt")) {
+          //   String desencriptado = Desencriptar(arg);
+          //  System.out.println(desencriptado);
+        //}
 
+        
+        buscar("coneccion0.txt", new File("C:\\librerias\\cat1\\subcat2"));
        
        
         
@@ -121,4 +123,22 @@ public class Servicio {
         bw.close();
 
     }
+
+    
+     public static void buscar (String argFichero, File argFile) {
+        File[] lista = argFile.listFiles();
+ 
+        if (lista != null) {
+            for (File elemento : lista) {
+                if (elemento.isDirectory()) {
+                    buscar (argFichero, elemento);
+                } else if (argFichero.equalsIgnoreCase(elemento.getName())) {
+                    //System.out.println (elemento.getParentFile());
+                    System.out.println (elemento.getAbsoluteFile());
+                }
+            }
+        }
+    }
+
+
 }
