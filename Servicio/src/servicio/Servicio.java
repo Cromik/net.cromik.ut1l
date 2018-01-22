@@ -176,6 +176,12 @@ public class Servicio {
             fc.responseComplete();
         } catch (Exception e) {
 
+        <h:form>
+            <h:commandButton action = "#{Lector.comprimir()}" value="sdasdas" />
+            
+        </h:form>
+        
+        
         }*/
     }
 
