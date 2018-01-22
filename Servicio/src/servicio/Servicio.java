@@ -8,10 +8,12 @@ package servicio;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +22,8 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 /**
  *
@@ -139,6 +143,43 @@ public class Servicio {
             }
         }
     }
+     
+     
+     
+         public StreamedContent getTempPdfFile() throws IOException {
+        File testPdfFile = new File("C:\\librerias\\cat1\\subcat2\\archivo.pdf");
+        return new DefaultStreamedContent(new FileInputStream(testPdfFile), "application/pdf",
+                "prueba.pdf");
+    }
+
+    public void downloadPdf() throws IOException {
+        File file = new File("C:\\librerias\\cat1\\subcat2\\subcat2.zip");
+
+        /*try {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            ExternalContext ec = fc.getExternalContext();
+
+            ec.responseReset();
+            ec.setResponseContentType("application/zip");
+            ec.setResponseHeader("Content-Disposition", "attachment;filename=\"4005.zip\"");
+
+            FileInputStream is = new FileInputStream(file);
+            OutputStream os = ec.getResponseOutputStream();
+
+            byte[] buffer = new byte[1024];
+            int length = 0;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+            os.flush();
+            is.close();
+            fc.responseComplete();
+        } catch (Exception e) {
+
+        }*/
+    }
+
+   
 
 
 }
